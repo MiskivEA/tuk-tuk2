@@ -12,4 +12,7 @@ DB_PORT = os.getenv('DB_PORT')
 
 JWT_KEY = os.getenv('JWT_KEY')
 
+SMTP_USER = os.getenv('SMTP_USER')
+SMTP_PASSWORD = os.getenv('SMTP_PASSWORD')
+
 # print(POSTGRES_USER, POSTGRES_PASSWORD, DB_NAME, DB_HOST, DB_PORT, sep='\n')

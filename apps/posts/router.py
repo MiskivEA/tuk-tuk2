@@ -20,7 +20,7 @@ router_posts = APIRouter(
 
 
 @router_posts.get('/')
-@cache(10)
+@cache(30)
 async def get_posts(session: AsyncSession = Depends(get_async_session)):
     """Получение всех объектов
     result = await db.execute(select(Task).order_by(Task.time.desc()).limit(20))
