@@ -1,3 +1,7 @@
+from fastapi_users import FastAPIUsers
+
+from apps.auth.manager import get_user_manager
+from apps.auth.models import User
 from settings.config import JWT_KEY
 from fastapi_users.authentication import CookieTransport, JWTStrategy, AuthenticationBackend
 
@@ -14,4 +18,9 @@ auth_backend = AuthenticationBackend(
     name="jwt",
     transport=cookie_transport,
     get_strategy=get_jwt_strategy,
+)
+
+fastapi_users = FastAPIUsers[User, int](
+    get_user_manager,
+    [auth_backend],
 )

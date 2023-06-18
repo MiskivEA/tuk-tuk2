@@ -8,20 +8,13 @@ from apps.auth.schemas import UserRead, UserCreate
 from apps.posts.router import router_posts as post_router
 from apps.tasks.router import router as task_router
 
-
 from fastapi_cache import FastAPICache
 from fastapi_cache.backends.redis import RedisBackend
 
-
 from redis import asyncio as aioredis
-
-fastapi_users = FastAPIUsers[User, int](
-    get_user_manager,
-    [auth_backend],
-)
+from apps.auth.auth import fastapi_users
 
 app = FastAPI()
-
 
 app.include_router(
     fastapi_users.get_auth_router(auth_backend),
